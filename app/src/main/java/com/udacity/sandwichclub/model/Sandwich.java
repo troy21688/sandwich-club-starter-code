@@ -26,9 +26,6 @@ public class Sandwich {
         this.ingredients = ingredients;
     }
 
-    //test commit
-
-    public int testinT();
 
     public String getMainName() {
         return mainName;
