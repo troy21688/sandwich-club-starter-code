@@ -13,10 +13,19 @@ public class JsonUtils {
     public static Sandwich parseSandwichJson(String json) throws JSONException {
 
         JSONObject sandwichObject = new JSONObject(json);
-        Sandwich sandwich = new Sandwich();
-
         JSONArray alsoKnownAs = new JSONArray("alsoKnownAs");
-        sandwich.setAlsoKnownAs((List<String>) alsoKnownAs);
+        String[] alsoKnownAsString = alsoKnownA
+        String mainName = sandwichObject.getString("mainName");
+        String placeOfOrigin = sandwichObject.getString("placeOfOrigin");
+        String description = sandwichObject.getString("description");
+        String imageURL = sandwichObject.getString("image");
+        JSONArray ingredients = sandwichObject.getJSONArray("ingredients");
+
+//        Sandwich sandwich = new Sandwich();
+//        sandwich.setAlsoKnownAs((List<String>) alsoKnownAs);
+
+        Sandwich sandwich = new Sandwich(mainName, alsoKnownAs, placeOfOrigin, description, imageURL, ingredients);
+
 
 
 
