@@ -14,7 +14,7 @@ public class JsonUtils {
 
         JSONObject sandwichObject = new JSONObject(json);
         JSONArray alsoKnownAs = new JSONArray("alsoKnownAs");
-        String[] alsoKnownAsString = alsoKnownA
+        String[] alsoKnownAsString = alsoKnownAhdtdtydtdyd
         String mainName = sandwichObject.getString("mainName");
         String placeOfOrigin = sandwichObject.getString("placeOfOrigin");
         String description = sandwichObject.getString("description");
