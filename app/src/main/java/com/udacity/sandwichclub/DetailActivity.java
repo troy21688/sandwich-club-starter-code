@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class DetailActivity extends AppCompatActivity {
             sandwich = JsonUtils.parseSandwichJson(json);
         } catch (JSONException e) {
             e.printStackTrace();
+            Log.v("ERROR", e.getMessage());
         }
         if (sandwich == null) {
             // Sandwich data unavailable
