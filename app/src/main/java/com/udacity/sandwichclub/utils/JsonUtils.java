@@ -16,6 +16,7 @@ public class JsonUtils {
         //How to handle if value is empty or null?
         //What is image is not loading? For instance, I went to the URL for "Shawarma" and the image loaded. However, within my app the image is not loading. I am unsure why and how to handle.
 
+        //Source: https://stackoverflow.com/questions/18192891/conversion-from-string-to-json-object-android?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
         JSONObject topObject = new JSONObject(json);
         JSONObject sandwichObject = topObject.getJSONObject("name");
         String mainName = sandwichObject.getString("mainName");

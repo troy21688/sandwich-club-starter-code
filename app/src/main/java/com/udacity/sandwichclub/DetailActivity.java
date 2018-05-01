@@ -54,6 +54,7 @@ public class DetailActivity extends AppCompatActivity {
         String json = sandwiches[position];
         Sandwich sandwich = null;
         //TODO: Investigate exception handling
+        //Am I handling my error correctly where the method is called, or do I need to handle in both locations? I logged and it did work correctly, however unsure if it is redundant running a try > catch in JsonUtils.class
         try {
             sandwich = JsonUtils.parseSandwichJson(json);
         } catch (JSONException e) {
@@ -75,6 +76,7 @@ public class DetailActivity extends AppCompatActivity {
 
         mMainName.setText(sandwich.getMainName());
         mDescription.setText(sandwich.getDescription());
+        //Determined how to remove braces with Stackoverflow: https://stackoverflow.com/questions/7536154/remove-brackets-from-a-list-set-to-a-textview?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
         String alsoKnownAsWithoutBrackets = sandwich.getAlsoKnownAs().toString().replace("[","").replace("]","");
         mAlsoKnownAs.setText(alsoKnownAsWithoutBrackets);
         mPlaceOfOrigin.setText(sandwich.getPlaceOfOrigin());
