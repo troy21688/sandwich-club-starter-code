@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -18,10 +19,22 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
+    private TextView mMainName;
+    private TextView mAlsoKnownAs;
+    private TextView mPlaceOfOrigin;
+    private TextView mDescription;
+    private TextView mIngredients;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        mDescription = findViewById(R.id.description_tv);
+        mMainName = findViewById(R.id.name_tv);
+        mAlsoKnownAs = findViewById(R.id.also_known_tv);
+        mPlaceOfOrigin = findViewById(R.id.origin_tv);
+        mIngredients = findViewById(R.id.ingredients_tv);
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
 
@@ -59,6 +72,16 @@ public class DetailActivity extends AppCompatActivity {
                 .into(ingredientsIv);
 
         setTitle(sandwich.getMainName());
+
+        mMainName.setText(sandwich.getMainName());
+        mDescription.setText(sandwich.getDescription());
+        String alsoKnownAsWithoutBrackets = sandwich.getAlsoKnownAs().toString().replace("[","").replace("]","");
+        mAlsoKnownAs.setText(alsoKnownAsWithoutBrackets);
+        mPlaceOfOrigin.setText(sandwich.getPlaceOfOrigin());
+        String ingredientsWithoutBrackets = sandwich.getIngredients().toString().replace("[","").replace("]","");
+        mIngredients.setText(ingredientsWithoutBrackets);
+
+
     }
 
     private void closeOnError() {

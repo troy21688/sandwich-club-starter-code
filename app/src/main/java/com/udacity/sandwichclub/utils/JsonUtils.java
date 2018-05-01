@@ -13,26 +13,21 @@ public class JsonUtils {
 
     public static Sandwich parseSandwichJson(String json) throws JSONException {
 
-        JSONObject topObject = new JSONObject("name");
-        JSONObject sandwichObject = topObject.getJSONObject(json);
-        String mainName = sandwichObject.getString("mainName");
-        JSONArray alsoKnownAs = new JSONArray("alsoKnownAs");
-        String[] alsoKnownAsString = new String[alsoKnownAs.length()];
-        for (int i = 0; i < alsoKnownAs.length(); i++){
-            alsoKnownAsString[i] = alsoKnownAs.getJSONObject(i).getString("alsoKnownAs");
-        }
-        List<String> alsoKnownAsList = Arrays.asList(alsoKnownAsString);
-        String placeOfOrigin = sandwichObject.getString("placeOfOrigin");
-        String description = sandwichObject.getString("description");
-        String imageURL = sandwichObject.getString("image");
-        JSONArray ingredients = sandwichObject.getJSONArray("ingredients");
-        String[] ingredientsString = new String[ingredients.length()];
-        for (int i = 0; i < ingredients.length(); i++){
-            ingredientsString[i] = ingredients.getJSONObject(i).getString("ingredients");
-        }
-        List<String> ingredientsList = Arrays.asList(ingredientsString);
+        //How to handle if value is empty or null?
+        //What is image is not loading? For instance, I went to the URL for "Shawarma" and the image loaded. However, within my app the image is not loading. I am unsure why and how to handle.
 
-        Sandwich sandwich = new Sandwich(mainName, alsoKnownAsList, placeOfOrigin, description, imageURL, ingredientsList);
+        JSONObject topObject = new JSONObject(json);
+        JSONObject sandwichObject = topObject.getJSONObject("name");
+        String mainName = sandwichObject.getString("mainName");
+        String alsoKnownAs = sandwichObject.getString("alsoKnownAs");
+        List<String> alsoKnownAsList = Arrays.asList(alsoKnownAs.split(","));
+        String placeOfOrigin = topObject.getString("placeOfOrigin");
+        String description = topObject.getString("description");
+        String imageURL = topObject.getString("image");
+        String ingredients = topObject.getString("ingredients");
+        List<String> ingredientList = Arrays.asList(ingredients.split(","));
+
+        Sandwich sandwich = new Sandwich(mainName, alsoKnownAsList, placeOfOrigin, description, imageURL, ingredientList);
 
         return sandwich;
     }
